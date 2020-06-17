@@ -41,9 +41,9 @@
                    letter and 1 number
                </span>
                 </div>
-                <button class="btn" type="submit">Get Started</button>
+                <button class="btn" type="submit" (click)="userlgn(registerForm.value)">Get Started</button>
                 <div class="signup3"><input type="checkbox">Remember login?</div>
-                <a href=""><p class="signup3">Forget Password?</p></a>
+                <a ><p class="signup3" routerLink="/forgotpassword" routerLinkActive="active">Forgot Password?</p></a>
                 <hr style="width: 75%;align-items: center; color:#546277;">
                
                    
@@ -54,7 +54,7 @@
   <!-- <a href="" class="fa   fa-twitter"></a>
   <a href="" class="fa  fa-instagram"></a>
   <a href="" class="fa  fa-pinterest"></a> -->
-  <button type="button" class="google-button">
+  <button type="button" class="google-button" (click)="socialSignIn('google')">
     <span class="google-button__icon">
       <a href="" class="fa   fa-google"></a>
     </span>

@@ -96,7 +96,33 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <button type="submit">Register Now</button>
+            <button type="submit" (click)="subdat(registerForm.value)">Register Now</button>
         </form>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" style="padding: 1% 0 0 48%;">
+    
+    <form enctype="multipart/form-data"  [formGroup]="imagesection" >
+         <input type="text" formControlName="productname" name="name" placeholder="name">
+         <input type="text" formControlName="producttype" name="quant" placeholder="rating" >
+         <input type="text" formControlName="productcost" name="cost" placeholder="cost" >
+         <input type="text" formControlName="productoriginal" name="originalcost" placeholder="originalcost" >
+        <input name="images" multiple type="file" (change)="onchange($event)" accept="image/*"  maxFileSize="10"  placeholder="enter data here" formControlName="imageform" name="imageform">
+
+    </form>
+    <button style="background-color:chocolate;cursor: pointer;border-color: chocolate;color: white;" (click)="onclick(imagesection.value)" >Add New Address</button>
+
+    <!-- routerLink="/form" routerLinkActive="active" -->
+</div> 

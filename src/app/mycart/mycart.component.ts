@@ -7,13 +7,16 @@ import { WishlistdataService } from '../wishlistdata.service';
   styleUrls: ['./mycart.component.css']
 })
 export class MycartComponent implements OnInit {
-public price:number ;
- public p:number=156;
+// public price:number ;
+//  public p:number=156;
  public update;
- public tax:number=25;
+//  public tax:number=25;
+ public total:number[]=[]
+ public priceTotal:number=0
   constructor(private _wishlistdata:WishlistdataService,) { 
     this.nextCount();
     // this.quality(1,);
+    
   }
    public cartarr=[];
    public val;
@@ -24,22 +27,26 @@ public wishlist=[];
     this._wishlistdata.cartpage.subscribe(c => {
       this.cartarr=c;
      this.o=this.cartarr.length;
-     
+    
   });
   if(this.cartarr.length > 0)
   {
     this.val=true;
     console.log(this.cartarr.length);
+    for(var k=0;k<this.cartarr.length;k++){
+      this.total[k]=this.cartarr[k].cost
+      this.priceTotal=this.priceTotal+parseInt(this.cartarr[k].cost)
+    }
   }
   }
-  quality(q,id){
+  quality(q,id,i){
     let  index = this.cartarr.findIndex(x => x.id === id);
-
-    this.cartarr[index].cost=q*(this.cartarr[index].cost);
+    let j=this.total[i]
+    this.total[i]=q*(this.cartarr[i].cost);
     // console.log("came",this.cartarr[index].cost);
     // console.log(this.price);
-    this.update=true;
-    
+    // i=true;
+    this.priceTotal=this.priceTotal+this.total[i]-j
   }
   nextCount() {
     this._wishlistdata.cartdetails();  
@@ -48,8 +55,9 @@ public wishlist=[];
 
   addNew(index,id){
     this._wishlistdata.prodmsg(index,id);
-    
+    this.priceTotal=this.priceTotal-this.total[index]
     this.cartarr.splice(index,1);
+    this.total.splice(index,1);
     if(this.cartarr.length === 0)
     {
       this.val=false;

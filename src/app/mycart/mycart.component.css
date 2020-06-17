@@ -189,6 +189,16 @@ table.responsive-table{
 
 
 
+.price{
+  text-align: right;font-size: 14px;
+  font-weight: bolder;
+}
+@media(max-width :991px){
+.price{text-align: center;}
+}
+
+
+
 
 
 

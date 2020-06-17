@@ -1,0 +1,99 @@
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+                          <div class="coloum ml-5 bg-info">
+                              <input type="text" placeholder="Select your location" (keyup)="search($event.target.value)">
+
+                              <div >
+                              <li *ngFor="let place of listedplaces" >
+                                  <h3>{{place.name}}</h3>
+                                  <h3>{{place.state}}</h3>
+                                  <button class="btn" (click)="Location(place)" class="btn">My Location</button>
+                              </li>
+                              </div>
+                              
+                              <div *ngIf="noproducts">
+                                  <hr>
+                                  <p>
+                                      No places found
+                                  </p>
+                              </div>
+                  </div>
+                  <div class="coloum bg-warning">
+                          <!-- list of places -->
+                          <h1>Seleted places</h1>
+                          <input type="text" placeholder="Add places" (keyup)="search($event.target.value)" (click)="secondinput()">
+
+                          <div >
+                          <li *ngFor="let place of listedplaces" >
+                              <h3>{{place.name}}</h3>
+                              <h3>{{place.state}}</h3>
+                              <button class="btn" (click)="selected(place)" class="btn">Add places</button>
+                          </li>
+                          </div>
+
+                          <div *ngIf="noproducts">
+                              <hr>
+                              <p>
+                                  No places found
+                              </p>
+                          </div>
+                  </div>
+                  <div class="coloum bg-info">
+                              <!-- list of places selected -->
+
+                              <h1>Selected place {{Locationuser.name}}</h1>
+
+
+                              <div >
+                                  <h1>List of you selected</h1>
+                                  <li *ngFor="let place of selectedplace" >
+                                      <h3>{{place.name}}</h3>
+                                      <!-- <h3>{{place.state}}</h3> -->
+                                      <!-- <button class="btn" (click)="selected(place)" class="btn">Add places</button> -->
+                                  </li>
+                              </div>
+                  </div>
+
+                  <div class="coloum"> 
+                      <button class="btn btn-primary" (click)="showthem()">Best Place</button>
+                  </div>
+    </div>
+</div>
+
+
+
+<div >
+  <h1>List of you selected</h1>
+  <li *ngFor="let place of sortedlist" >
+      <h3>{{place.name}}</h3>
+      <h3>{{place.distance}}</h3>
+      <!-- <button class="btn" (click)="selected(place)" class="btn">Add places</button> -->
+  </li>
+</div>
+
+
+
+
+
+
+
+
+
+<agm-map [latitude]="lat" [longitude]="lng" (mapClick)="clickedlocation($event)" >
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+
+
+
+<!-- suggestion through map -->
+<h1>home place</h1>
+<h4>{{home}}</h4>
+<button (click)="confirm('home')">Sure</button>
+
+<button (click)="confirm('selected')">Add places</button>
+
+<h1>selected places</h1>
+
+<div *ngFor="let place of selectedplaces">
+    <h4>{{place}}</h4>
+</div>

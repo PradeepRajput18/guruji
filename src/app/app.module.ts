@@ -16,7 +16,33 @@ import{InfiniteScrollModule} from 'ngx-infinite-scroll';
 import{NgxSpinnerModule} from 'ngx-spinner';
 import{HttpClientModule} from '@angular/common/http';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
-
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from "angular-6-social-login";
+import { OtpComponent } from './otp/otp.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+import { AgmCoreModule } from '@agm/core';
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        // {
+        //   id: FacebookLoginProvider.PROVIDER_ID,
+        //   provider: new FacebookLoginProvider("Your-Facebook-app-id")
+        // },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("768954435009-2b5ovtp6buo28p6gnldjs7o2h1sj2fuu.apps.googleusercontent.com")
+        },
+         
+      ]
+  );
+  return config;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +54,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
     CatComponent,
     DupComponent,
     MainComponent,
-    ProDetailsComponent
+    ProDetailsComponent,
+    OtpComponent,
+    ForgotpasswordComponent,
+    SuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +66,18 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
     InfiniteScrollModule,
     NgxSpinnerModule,
     HttpClientModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    SocialLoginModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBWy16vPjLi0HpzDceyZ35MD8hefjHGsYQ'
+    }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

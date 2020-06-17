@@ -2,10 +2,10 @@
 
   
 <div class="icon">
-    <a href="#" class="facebook"> <i class="fa fa-facebook"></i>facebook</a> 
-    <a href="#" class="twitter"><i class="fa fa-twitter"></i>twitter</a> 
-    <a href="#" class="google"><i class="fa fa-google"></i>google</a> 
-    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i>linkedin</a>
+    <a href="#" class="facebook"  > <i class="fa fa-facebook"></i>facebook</a> 
+    <a href="#" class="twitter" ><i class="fa fa-twitter"></i>twitter</a> 
+    <a (click)="socialSignIn('google')"  class="google"><i class="fa fa-google"></i>google</a> 
+    <a href="#" class="linkedin" ><i class="fa fa-linkedin"></i>linkedin</a>
 </div>
 <div class="container mt-5 " style="padding-top: 30px;">
 <div class="row ">
@@ -149,7 +149,9 @@
       <button class="likebtn">36K<i class="fa fa-heart"></i></button>
     
       <br>
-       <img src="{{x.img}}"  class="pic" style="height: 145px;">
+       <img class="card-img-top" src="http://localhost:3000/product?qu={{x.path}}" alt="No image found" style="width:100%">
+
+       <!-- <img src="{{x.img}}"  class="pic" style="height: 145px;"> -->
        <div class="car ">
         <h5 class="font2">{{x.name}}/<b>{{x.quant}}</b></h5>
         <h5 class="font2">Price:<b class="font1">Rs.{{x.cost}}/-</b></h5>
@@ -161,9 +163,9 @@
          <button class="dbtn1" (click)="details(i)" routerLink="/proDetails" style="cursor: pointer;">View <i class="fa fa-eye"></i></button>
 
         </div>
+       </div> 
        </div>
-       </div>
-     </div>
+      </div>
      
          </div>
   

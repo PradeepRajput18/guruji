@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SandeepService } from '../sandeep.service';
 
 @Component({
   selector: 'app-personalinfo',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalinfoComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private sandeep:SandeepService) { }
   ngOnInit() {
   }
+
+
+  
 
 }

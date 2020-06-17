@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { WishlistdataService } from '../wishlistdata.service';
 import{Router} from '@angular/router';
-
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
+import { ServersideService } from '../serverside.service';
+import { SandeepService } from '../sandeep.service';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -9,15 +15,23 @@ import{Router} from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private _wishlistpopular:WishlistdataService,  private router:Router,private _wishlistdata:WishlistdataService) { 
+  constructor(private _wishlistpopular:WishlistdataService, 
+     private router:Router,
+     private _wishlistdata:WishlistdataService,
+     private socialAuthService: AuthService,
+     private serverside:ServersideService,
+    private sandeepser:SandeepService
+    ) { 
     this.timer();
     this.nextCount();
   }
-public popular=[];
+public items:any
+public popular:any;
   ngOnInit() {
     this._wishlistdata.pro.subscribe(c => {
       this.popular=c;
-     
+      this.popular.length=8
+
   });
   }
   customerscount=1000;
@@ -57,5 +71,29 @@ public popular=[];
 } 
 nextCount() {
   this._wishlistdata.product();  
+}
+
+
+// socil login
+
+public socialSignIn(socialPlatform : string) {
+  let socialPlatformProvider;
+  if(socialPlatform == "facebook"){
+    socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+  }else if(socialPlatform == "google"){
+    socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+  } else if (socialPlatform == "linkedin") {
+    // socialPlatformProvider = LinkedinLoginProvider.PROVIDER_ID;
+  }
+  this.socialAuthService.signIn(socialPlatformProvider).then(
+    (userData) => {
+      console.log(socialPlatform+" sign in data : " , userData);
+      // Now sign-in with userData
+      // ...
+      this._wishlistdata.googledetails(userData)
+      this.router.navigate(['/personalinfo'])
+          
+    }
+  );
 }
 }

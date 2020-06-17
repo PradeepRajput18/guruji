@@ -1,26 +1,36 @@
 export interface Iproduct{
-   id:number;
-   img:string;
-name:string;
-quant:string;
-rating:number;
-cost:number;
-originalcost:number;
-offer:string;
-button:string;
-carbutton:string;
-carheart:string;
-   
+    path:String,
+    name:String,
+    rating:String,
+    cost:String,
+    original:String,
+    offer:String,
+    button:String,
+    carbutton:String,
+    carheart:String,
+    quant:String,
     
-
-}
-
-export interface Iprice{
-
-    item_id:number;
-    item_text:string;
-    min:number;
-    max:number;
+    
+    
+    
+    
+    }
+    
+    export interface Iprice{
+    
+        item_id:number;
+        item_text:string;
+        min:number;
+        max:number;
+            
         
+    }
     
-}
+    export interface Irate{
+    
+        item_id:number;
+        item_text:string;
+      
+            
+        
+    }

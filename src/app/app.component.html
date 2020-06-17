@@ -27,9 +27,12 @@
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false"><span class="fa fa-user"></span></a>
               <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link"  routerLink="/login" routerLinkActive="active"><span class="fa fa-sign-in"  style="padding-right: 20px;"></span>Login</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLink="/signup" routerLinkActive="active"><span class="fa fa-user-plus"style="padding-right: 20px;"></span>Register</a></li>
+                <li class="nav-item"><a class="nav-link" *ngIf="!sandeepser.LoggedIn()"  routerLink="/login" routerLinkActive="active"><span class="fa fa-sign-in"  style="padding-right: 20px;"></span>Login</a></li>
+                <li class="nav-item"><a class="nav-link" *ngIf="!sandeepser.LoggedIn()"  routerLink="/signup" routerLinkActive="active"><span class="fa fa-user-plus"style="padding-right: 20px;"></span>Register</a></li>
+              <li class="nav-item"><a class = "nav-link" *ngIf="sandeepser.LoggedIn()" (click)="sandeepser.logoutUser()">Logout</a></li>
+
               </ul>
+
             </li>
             
               <li class="nav-item"><button  class="cart"  routerLink="/cart" routerLinkActive="active"><span class="fa fa-shopping-bag"></span>
@@ -49,7 +52,7 @@
   <div class="search_input" id="search_input_box" *ngIf=searched>
     <div class="container">
       <form class="d-flex justify-content-between">
-        <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+        <input type="text" class="form-control" id="search_input" placeholder="Search Here" (keyup)="search($event.target.value)">
         <button type="submit" class="btn"></button>
         <span class="fa fa-close" id="close_search" title="Close Search" (click)='offsearch()'></span>
       </form>
@@ -57,4 +60,33 @@
   </div>
 </header>
 
+
+
+
+
+
+
+<!-- changes by me  -->
+<div class="container" style="padding-top: 0px;">
+      <div class="search-results" infiniteScroll [infiniteScrollDistance]="2"  [infiniteScrollThrottle]="50">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2" *ngFor="let post of products;let i=index;">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-lg 9 col-md-9 col-sm-10 col-9">
+                                    <!-- <img class="card-img-top" src="http://localhost:3000/product?qu={{post.path}}" alt="No image found" style="width:100%"> -->
+                                    <div class="card-body">
+                                    <h5 class="card-title font5">{{post.name}} pack of {{post.quant}}</h5>
+                                   
+                                    <br>
+                                    </div>
+    </div>
+    </div>
+  </div>
+    
+
+</div>
+
+<div *ngIf="!products?.length  && noproducts">                
+  <h4>no products found</h4>        
+</div> 
 <router-outlet></router-outlet>

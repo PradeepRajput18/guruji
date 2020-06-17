@@ -17,6 +17,9 @@ import { AddformComponent } from './addform/addform.component';
 import { ProDetailsComponent } from './pro-details/pro-details.component';
 import { CatComponent } from './cat/cat.component';
 import { MainComponent } from './main/main.component';
+import { OtpComponent } from './otp/otp.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
 
 
 const routes: Routes = [
@@ -29,8 +32,9 @@ const routes: Routes = [
   {path:'cart',component:MycartComponent},
   {path:'about',component:AboutusComponent},
   {path:'wishlist',component:MywishlistComponent},
-
-
+  {path:'forgotpassword', component:ForgotpasswordComponent},
+  {path:'otp',component:OtpComponent},
+  {path:"suggestion",component:SuggestionComponent},
 //need to be done
   {path:'account',component:PersonalinfoComponent,
     // children:[

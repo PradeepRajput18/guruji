@@ -5,41 +5,64 @@ import{Router} from '@angular/router';
 import { WishlistdataService } from '../wishlistdata.service';
 import {Iproduct} from '../pro';
 import {Iprice} from '../pro';
+import {Irate} from '../pro';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  products:Iproduct[];
-  a:Iproduct[];
+  // products:Iproduct[];
+  // a:Iproduct[];
   constructor(private http:HttpClient,private spinner:NgxSpinnerService,
     private router:Router,private _wishlistdata:WishlistdataService){
       this.nextCount();
+     
     
   }
   dropdownList1=[];
   dropdownList2=[];
-  // filteredpro=[]
   filterprice:Iprice[];
+  filterrate:Irate[];
   selprice=[];
-  selItems1=[];
-  selItems2=[];
+  selrate=[];
+  seldry=[];
   ddsettings={};
+  public f=[];
+  public original=[];
+  public filterp=[];
+  public filterr=[];
+  public filterd=[];
   ar=[];
   filtersettings={};
   filterpricesettings={};
-  allpost;
+  allpost=[];
   notEmptyPost=true;
   notscrolly=true;
    public wish=[];
-//  public a=[];
+ public a=[];
+ public products=[];
  public wishlist=[];
 
   ngOnInit(){
+  //   this._wishlistdata.count.subscribe(c => {
+  //     this.wishlist=c;
+     
+  // });
+    // this._wishlistdata.productdetails().subscribe(data=>{
+    //   this.products=data
+    //   this.a=this.products;
+    //   console.log(this.a);
+    // })
+  
     this.timer();
-    this.products=this._wishlistdata.getproducts();
-    this.a=this.products;
+// get the products
+this._wishlistdata.pro.subscribe(c => {
+  this.a=c;
+  this.products=c;
+});
+
+   
     this.dropdownList1=[
       {id:1,name:"Badam"},
       {id:2,name:"pistachio"},
@@ -47,18 +70,21 @@ export class ProductComponent implements OnInit {
       {id:4,name:"Cashew"},
       {id:5,name:"Nuts"} 
     ];
-
     this.dropdownList2=[
       {id:6,name:"Chilli Powder"},
     ];
-
     this.filterprice=[
       {item_id:0,item_text:"800-1000",min:800,max:1000},
       {item_id:1,item_text:"600-800",min:600,max:800},
       {item_id:2,item_text:"400-600",min:400,max:600},
       {item_id:3,item_text:"below 400",min:0,max:400},
-      
     ];
+    this.filterrate=[
+      {item_id:1,item_text:"1⭐ and above"},
+      {item_id:2,item_text:"2⭐ and above"},
+      {item_id:3,item_text:"3⭐and above"},
+      {item_id:4,item_text:"4⭐and above"},  
+    ]
 this.filterpricesettings={
   singleSelection:true,
   idField:"item_id",
@@ -80,147 +106,185 @@ this.filterpricesettings={
 
     this.ddsettings={
       singleSelection:false,
-      idField:"id",
-      textField:"name",
+      idField:"item_id",
+      textField:"item_text",
       selectAllText:"Select All",
       unSelectAllText:"unselect All",
       itemsShowLimit:5,
       allowSearchFilter:true
     };
   
-    this._wishlistdata.pro.subscribe(c => {
-      this.a=c;
-  });
- 
+    
 
 this. loadInitPost();
   }
- 
+  nextCount() {
+    this._wishlistdata.product();  
+  }
+  loadInitPost(){
+   console.log(this.a);
+      this.allpost=this.a;
+      this.original=this.a;
+      this.products=this.a;
+      this.filterp=this.products;
+      this.filterr=this.products;
+      this.filterd=this.products;
+    
+      // console.log(this.allpost); 
+  
+}
+
 
   fp(max:number,min:number){
-    console.log(this.products);
+    // console.log(this.products);
     return this.products.filter(t=>t.cost>=min && t.cost<=max)
     }
-    onitemselprice(item:any){
-    
-      console.log("JGD")
-      console.log(this.selprice)
-      
-      console.log("maximum value is"+this.filterprice[0].max);
-      if(this.selprice[0].item_id==0){
-        this.a=this.fp(this.filterprice[0].max,this.filterprice[0].min);
-        this. loadInitPost();
-      }
-  
-      if(this.selprice[0].item_id==1){
-        this.a=this.fp(this.filterprice[1].max,this.filterprice[1].min);
-        this. loadInitPost();
-      }
-  
-      if(this.selprice[0].item_id==2){
-        this.a=this.fp(this.filterprice[2].max,this.filterprice[2].min);
-        this. loadInitPost();
-      }
-  
-  
-      if(this.selprice[0].item_id==3){
-        this.a=this.fp(this.filterprice[3].max,this.filterprice[3].min);
-        this. loadInitPost();
-      }
+
+    fr(m:number)
+    {
+      return this.products.filter(t=>t.rating>=m)
     }
-    //   for(var i=0;i<this.selprice.length;i++){
-    //     for(var j=0;j<this.selprice.length;j++){
-    //       if(this.selprice[i].min==this.selprice[j].max){
-    //         max=this.selprice[i].max;
-    //               min=this.selprice[j].min;
-    //               if(i==this.selprice.length-1 && j==this.selprice.length-1){
-    //                 this.filteredpro=this.fp(max,min);
+  onitemselprice(item:any)
+  {
+    if(this.selprice.length){
+          // console.log("maximum value is"+this.filterprice[0].max);
+          if(this.selprice[0].item_id==0){
+            this.filterp=this.fp(this.filterprice[0].max,this.filterprice[0].min);
+          }
+          if(this.selprice[0].item_id==1){
+            this.filterp=this.fp(this.filterprice[1].max,this.filterprice[1].min);
+          }
+          if(this.selprice[0].item_id==2){
+            this.filterp=this.fp(this.filterprice[2].max,this.filterprice[2].min);
+          }
+          if(this.selprice[0].item_id==3){
+            this.filterp=this.fp(this.filterprice[3].max,this.filterprice[3].min);
+          }
+       }   
+       this.filters(this.filterp,this.filterr,this.filterd);
+  }
+  onItemDeSelectprice(item:any){
+    this.filterp = this.products;
+    this.filters(this.filterp,this.filterr,this.filterd);
+  }
+  onitemselrat(item:any)
+  {
+    if(this.selrate.length){
+          let m=this.selrate[0].item_id;
+          this.filterr=this.fr(m)
+        }
+        this.filters(this.filterp,this.filterr,this.filterd);
+  }
+  onItemDeSelectrat(item:any){
+    this.filterr = this.products;
+    this.filters(this.filterp,this.filterr,this.filterd);
+  }
+  onitemseldry(item:any)
+  {
+    var i,j;
+    let c;
+     this.f=[];
+  for(i=0;i<this.seldry.length;i++)
+  {
+    let   k=this.products;
+    for(j=0;j<k.length;j++)
+    {
+    if(this.seldry[i].name===k[j].name)
+    {
+      c=(k[j]);
+      this.f.push(c);
+    }
+  }
+  }
+  if(this.seldry.length===0)
+  {
+    this.f=this.products;
+  }
+  this.filterd=this.f;
+  
+  this.filters(this.filterp,this.filterr,this.filterd);
+  }
+onitemselalldry(items:any)
+{
+let p=[];
+console.log("items",items);
+p=(items);
+var i,j;
+let c;
+let v=[];
+if(items.length===0)
+{
+  v=this.products;
+}
+else{
+for(i=0;i<p.length;i++)
+{
+  let   k=this.products;
+
+  for(j=0;j<k.length;j++)
+  {
+  if(p[i].name===k[j].name)
+  {
+    v.push(k[j]);
+    console.log(v)
+  }
+}
+}
+}
+this.filterd=v;
+this.filters(this.filterp,this.filterr,this.filterd);
+}
+  
+onItemDeSelectalldry(items:any)
+{
+  this.filterd=this.products;
+  this.filters(this.filterp,this.filterr,this.filterd);
+}
+filters(p,r,d)
+{
+  
+  console.log(p,r,d);
+  let fil=[];
+  let f=0;
+  let c;
+  let g;
+  this.a=[];
+  for(var i in p){
+    for(var j in r){
+        if(p[i]._id === r[j]._id ){
+          c=p[i];
+           fil.push(c);
+      
+         }
         
-    //               }
-    //     }
-     
-    //   }
-      
-    // }
-  
-  
-    onItemDeSelectprice(item:any){
-      console.log("removed item"+item.item_text);
-      if(this.selprice.length==0){
-        this.a=this.products;
-        this. loadInitPost();
-      }
-      
-    }
+    } 
     
+ }
+ console.log(fil);
+ for(var i in fil){
+  for(var j in d){
+      if(fil[i]._id === d[j]._id ){
+         this.a.push(fil[i]);
+         f++;
+        }
+       
+  }
+
+}
+if(f===0)
+{
+  this.a=[];
+}
+this.allpost=this.a;
+
+// this.loadInitPost();
+}
+
     onselallprice(items:any){
       console.log(items);
     }
-  onitemsel(item:any){
-    //   console.log(item);
-    this.ar.push(item);
-    // console.log("add",this.ar);
-    this._wishlistdata.filters(this.ar);
-    this._wishlistdata.pro.subscribe(c => {
-      this.a=c;
-  });
 
-  this.nextCount();
-  this. loadInitPost();
-  console.log(this.a);
-  }
-
-  onselall(items:any){
-    // console.log(items);
-
-    this.ar=items;
-    // console.log(this.ar);
-    this._wishlistdata.filters(this.ar);
-    this._wishlistdata.pro.subscribe(c => {
-    this.a=c;
-     
-  });
-  this.nextCount();
-  this. loadInitPost();
-  console.log(this.a);
-  }
-  ondeselall(items:any){
-    this.ar=[];
-    // console.log("alldel",this.ar);
-    this._wishlistdata.filters(this.ar);
-    this._wishlistdata.pro.subscribe(c => {
-      this.a=c;
-     
-  });
-  this.nextCount();
-  this. loadInitPost();
-  console.log(this.a);
-  }
-
-  onItemDeSelect(item:any){
-    
-    this.ar = this.ar.filter(x => x.id !== item.id);
-    this._wishlistdata.filters(this.ar);
-    this._wishlistdata.pro.subscribe(c => {
-      this.a=c;
-     
-  });
-  this.nextCount();
-  this. loadInitPost();
-  console.log(this.a);
-  }
-
-  loadInitPost(){
-
-   
-    // const url='http://tlino.96.lt/api/getblogspot';
-    // this.http.get(url).subscribe(data=>{
-      // console.log(this.a);
-      
-    // });
-    this.allpost =this.a;
-  }
-  onScroll()
+onScroll()
   {
     if(this.notscrolly && this.notEmptyPost)
     {
@@ -229,7 +293,6 @@ this. loadInitPost();
       this.loadNextPost();
     }
   }
- 
   x:any
   days :number  
   hours:number   
@@ -254,27 +317,26 @@ this. loadInitPost();
   }
   
  
-  loadNextPost()
+loadNextPost()
   {
-    // const url='http://tlino.96.lt/api/getblogspot';
     const lastpost=this.allpost[this.allpost.length-1];
     const lastpostid=lastpost.id;
     const dataTosend = new FormData();
     dataTosend.append('id',lastpostid);
-    // this.http.post(url,dataTosend)
-    // .subscribe((data:any)=>{
-      // const newpost=this.data[0];
-      const newpost=this.a[-1];
+    this.http.post('/productdetails',dataTosend)
+    .subscribe((data:any)=>{
+      const newpost=data[0];
     this.spinner.hide();
-    if(newpost[0]===0)
+  
+    if(newpost.length===0)
     {
       this.notEmptyPost=false;
     }
     this.allpost=this.allpost.concat(newpost);
     this.notscrolly=true;
-    // });
-    
+    });
   }
+// to wishlist
   sendpic(id,index)
   {
     if(this.a[index].carheart=="fa fa-heart-o")
@@ -284,7 +346,7 @@ this. loadInitPost();
       console.group("add",id);
       }
       else{
-       
+      //  navbar count
         this._wishlistdata.deletefromlist(id);  
         this.a[index].carheart= "fa fa-heart-o";
         this._wishlistdata.count.subscribe(c => {
@@ -295,28 +357,27 @@ this. loadInitPost();
       }
     
   }
+  // prodetails
   details(index)
   {
     this._wishlistdata.send(this.a[index]);
   }
 
-  nextCount() {
-    this._wishlistdata.product();  
-  }
-  
-  senddata(index)
+ 
+  // to cart
+  senddata(id)
 {
-  
-  if( this.a[index].carbutton==="go to cart")
+  let  index = this.original.findIndex(x => x._id === id);
+  console.log(index,id);
+  if( this.original[index].carbutton==="go to cart")
   {
     this.router.navigate(['cart']);
 
   }
   else{
    
-    this.a[index].carbutton= "go to cart";
-    // this.sendtocart.push(this.data[index]);
-  this._wishlistdata.cart(this.a[index]);
+    this.original[index].carbutton= "go to cart";
+  this._wishlistdata.cart(this.allpost[index]);
  
     
   }
