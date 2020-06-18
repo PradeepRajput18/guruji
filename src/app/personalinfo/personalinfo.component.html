@@ -8,23 +8,22 @@
         <form  >
             <div class="form-group d-flex " style="align-items: left;">
                 <label>FirstName:</label>
-              <input  type="text" placeholder="Profilerlname" disabled class="username form-control" />
+              <input  type="text" placeholder="Profilerlname" disabled class="username form-control" [value]="fname"  />
             </div>
-            
             <div class="form-group d-flex">
                 <label>LastName:</label>
-              <input  type="text" placeholder="Profilerlname" disabled class="username form-control" />
+              <input  type="text" placeholder="Profilerlname" disabled class="username form-control" [value]="lname" />
             </div>
 
             <div class="form-group d-flex">
                 <label>E-mail Id    :</label>
-              <input  type="email" placeholder="Profiler@gmail.com" disabled class="username form-control" />
+              <input  type="email" placeholder="Profiler@gmail.com" disabled class="username form-control" [value]="googleuser[0].email" />
             </div>
               
            
             <div class="form-group d-flex">
                 <label>UserName:</label>
-              <input  type="text" placeholder="ProfilerUname" disabled class="username form-control"/>
+              <input  type="text" placeholder="ProfilerUname" disabled class="username form-control" [value]="googleuser[0].name"/>
             </div>
 
             

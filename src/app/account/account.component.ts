@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { WishlistdataService } from '../wishlistdata.service';
+import { SandeepService } from '../sandeep.service';
 
 @Component({
   selector: 'app-account',
@@ -10,7 +13,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AccountComponent implements OnInit {
   imageURL: string = "";
   uploadForm: FormGroup;
-  constructor(public fb:FormBuilder) {
+
+  googleuser=[];
+  constructor(public fb:FormBuilder,private sandeep:SandeepService,private _wishlistdata:WishlistdataService,private router:Router) {
     this.uploadForm = this.fb.group({
       avatar: [null],
       
@@ -26,6 +31,11 @@ export class AccountComponent implements OnInit {
       // }
       // if(window.innerWidth>991){$('.overlay').removeClass('active');}
   });
+
+  this._wishlistdata.user.subscribe(c=>{
+    this.googleuser.push(c)
+  },err=>{console.log(err);
+  })
   }
 
 

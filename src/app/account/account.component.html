@@ -19,12 +19,12 @@
   <input type="file" (change)="UploadImg($event)"> -->
 
   <div  *ngIf=" imageURL === ''">
-    <img src="../../assets/user.png" class="logo1"alt="user">
+    <img [src]="googleuser[0].image" class="logo1"alt="../../assets/user.png">
   </div>
   <form [formGroup]="uploadForm" (ngSubmit)="submit()">
      <!-- Image Preview -->
      <div *ngIf="imageURL && imageURL !== ''">
-      <img [src]="imageURL" class="logo1"[alt]="uploadForm.value.name">
+      <img [src]="googleuser[0].image" class="logo1"[alt]="uploadForm.value.name">
     </div>
      
     <h1><a  class="logo mb-0 mt-2"> Profiler</a></h1>

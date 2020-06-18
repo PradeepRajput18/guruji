@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   
-<div class="icon">
+<div class="icon" *ngIf="googleuser">
     <a href="#" class="facebook"  > <i class="fa fa-facebook"></i>facebook</a> 
     <a href="#" class="twitter" ><i class="fa fa-twitter"></i>twitter</a> 
     <a (click)="socialSignIn('google')"  class="google"><i class="fa fa-google"></i>google</a> 
@@ -17,7 +17,7 @@
                     have Same Delicious Food <br>With Organic Values.
                 </p>
                 <footer class="blockquote-footer ">Words from a <cite title="Source Title font-weight-bold">Country Man</cite></footer>
-                <button class="btn mt-4 btn-logo font1" >Learn More</button>
+                <button class="btn mt-4 btn-logo font1" [routerLink]="['/about']" routerLinkActive="router-link-active"  >Learn More</button>
             </blockquote>
         </div>    
         <div class="col-lg-6 ">

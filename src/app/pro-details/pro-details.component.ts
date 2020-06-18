@@ -14,22 +14,12 @@ export class ProDetailsComponent implements OnInit {
    }
 data=[];
 sendtocart=[];
-googleuser=[];
+
 ngOnInit() {
   this._wishlistdata.details.subscribe(c => {
     this.data.push(c);
 });
 
-this._wishlistdata.user.subscribe(c=>{
-  this.googleuser.push(c)
- console.log(c,"hey i am google details oka na");
- this.router.navigate(['/personalinfo'])
- 
- 
-
-},err=>{console.log(err);
-})
-console.log("called");
 
 }
 nextCount() {

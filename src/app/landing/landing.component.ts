@@ -25,14 +25,21 @@ export class LandingComponent implements OnInit {
     this.timer();
     this.nextCount();
   }
+
+  googleuser=false;
+
 public items:any
 public popular:any;
   ngOnInit() {
-    this._wishlistdata.pro.subscribe(c => {
-      this.popular=c;
-      this.popular.length=8
+          this._wishlistdata.pro.subscribe(c => {
+            this.popular=c;
+            this.popular.length=8
 
-  });
+        });
+        this._wishlistdata.user.subscribe(c=>{
+          this.googleuser=c
+        },err=>{console.log(err);
+        })
   }
   customerscount=1000;
   start;

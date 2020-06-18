@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SandeepService } from '../sandeep.service';
+import { WishlistdataService } from '../wishlistdata.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personalinfo',
@@ -8,11 +10,25 @@ import { SandeepService } from '../sandeep.service';
 })
 export class PersonalinfoComponent implements OnInit {
 
-  constructor(private sandeep:SandeepService) { }
+  constructor(private sandeep:SandeepService,private _wishlistdata:WishlistdataService,private router:Router) { }
+  googleuser=[];
+  fname
+  lname
+  name
   ngOnInit() {
+    this._wishlistdata.user.subscribe(c=>{
+      this.googleuser.push(c)
+      this.name=this.googleuser[0].name
+      this.fname=this.name.split(" ")[1]
+      this.lname=this.name.split(" ")[0]
+     console.log(c,"hey i am google details oka na");
+     console.log(this.googleuser,"hey i am google pro details oka na");
+    //  this.router.navigate(['/personalinfo'])
+    },err=>{console.log(err);
+    })
   }
 
-
+ 
   
 
 }
