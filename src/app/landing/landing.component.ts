@@ -26,7 +26,7 @@ export class LandingComponent implements OnInit {
     this.nextCount();
   }
 
-  googleuser=false;
+  googleuser;
 
 public items:any
 public popular:any;
@@ -37,7 +37,7 @@ public popular:any;
 
         });
         this._wishlistdata.user.subscribe(c=>{
-          this.googleuser=c
+          this.googleuser=!!c
         },err=>{console.log(err);
         })
   }

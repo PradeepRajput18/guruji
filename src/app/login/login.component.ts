@@ -8,6 +8,7 @@ import {
 } from 'angular-6-social-login';
 import { Router } from '@angular/router';
 import { SandeepService } from '../sandeep.service';
+import { WishlistdataService } from '../wishlistdata.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private customValidator: CustomvalidationService,
     private socialAuthService: AuthService,
     private router:Router,
-    private sandeepser:SandeepService
+    private sandeepser:SandeepService,
+    private wishlist:WishlistdataService
   ){}
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -67,6 +69,7 @@ export class LoginComponent implements OnInit {
         console.log(socialPlatform+" sign in data : " , userData);
         // Now sign-in with userData
         // ...
+        this.wishlist.googledetails(userData)
         this.router.navigate(['/personalinfo'])
             
       }

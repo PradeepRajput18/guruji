@@ -21,6 +21,8 @@
             <li class="nav-item active"><a class="nav-link" href="#" routerLink="/home" routerLinkActive="active">Home</a></li>
             <li class="nav-item active"><a class="nav-link" href="#" routerLink="/cat" routerLinkActive="active">Shop</a></li>
             <li class="nav-item active"><a class="nav-link" href="#" routerLink="/about" routerLinkActive="active">About</a></li>
+    <a href="" routerLink="/home"  routerLinkActive="active" class="btn" (click)="signOut()">{{googleuser.name}}</a>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item submenu dropdown">
@@ -52,11 +54,12 @@
   <div class="search_input" id="search_input_box" *ngIf=searched>
     <div class="container">
       <form class="d-flex justify-content-between">
-        <input type="text" class="form-control" id="search_input" placeholder="Search Here" (keyup)="search($event.target.value)">
+        <input type="text" class="form-control" id="search_input" placeholder="Search Here" (keyup)="search($event)">
         <button type="submit" class="btn"></button>
         <span class="fa fa-close" id="close_search" title="Close Search" (click)='offsearch()'></span>
       </form>
     </div>
+
   </div>
 </header>
 
@@ -75,10 +78,10 @@
                                     <div class="col-lg 9 col-md-9 col-sm-10 col-9">
                                     <!-- <img class="card-img-top" src="http://localhost:3000/product?qu={{post.path}}" alt="No image found" style="width:100%"> -->
                                     <div class="card-body">
-                                    <h5 class="card-title font5">{{post.name}} pack of {{post.quant}}</h5>
-                                   
+                                    <h5 class="card-title font5" (click)="details(i)" routerLink="/proDetails">{{post.name}} pack of {{post.quant}}</h5>
                                     <br>
                                     </div>
+                                   
     </div>
     </div>
   </div>
@@ -86,7 +89,8 @@
 
 </div>
 
-<div *ngIf="!products?.length  && noproducts">                
+<div *ngIf="noproducts" style="margin-top: 150px;">                
   <h4>no products found</h4>        
-</div> 
+</div>
+ 
 <router-outlet></router-outlet>

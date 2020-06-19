@@ -3,6 +3,7 @@ import { WishlistdataService } from './wishlistdata.service';
 import { SandeepService } from './sandeep.service';
 import { ServersideService } from './serverside.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from 'angular-6-social-login';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   constructor(private _wishlistdata:WishlistdataService,
              private sandeepser:SandeepService,
              private serverside:ServersideService,
-             private spinner:NgxSpinnerService){
+             private spinner:NgxSpinnerService,
+             private socialAuthService: AuthService){
     this.nextCount();
     console.log("came");
   }
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
   public searched;
   public wishlist=[];
   public cart=[];
+  public googleuser=false;
   onsearch(){
     this.searched=true;
   }
@@ -28,9 +31,21 @@ export class AppComponent implements OnInit {
     this.searched=false
   }
 
+    // prodetails
+    details(index)
+    {
+      this._wishlistdata.send(this.products[index]);
+    }
+
 // ng on init
   // detailscomp=new Array()
   ngOnInit() {
+
+    this._wishlistdata.user.subscribe(c=>{
+      this.googleuser=c
+      
+    },err=>{console.log(err);
+    })
     
     this._wishlistdata.count.subscribe(c => {
       this.wishlist=c;     
@@ -66,7 +81,9 @@ products=new Array()
   previousvalue
   noproducts=false
   previoussearch=new Array()
-  search(value){
+  lastkeypress=0
+  search(event){
+    let value=event.target.value
     console.log(value);
     console.log(value.length,"value x");
     if(this.previousvalue!=value){
@@ -78,23 +95,39 @@ products=new Array()
         this.products.length=0
       }
     }
-
-    this.detailscomp.forEach((element)=>{
-      if(element.name.toLowerCase()===value){
-          this.products.push(element)
-      }
-      if(element.name.toLowerCase().includes(value)){
-         this.products.push(element)
-      }
-    })
+    console.log(event.timeStamp-this.lastkeypress,"time calculation");
+    
+    if((event.timeStamp-this.lastkeypress)>200)
+    {
+      this.lastkeypress=event.timeStamp
+      this.detailscomp.forEach((element)=>{
+        if(element.name.toLowerCase()===value){
+            this.products.push(element)
+        }
+        if(element.name.toLowerCase().includes(value)){
+           this.products.push(element)
+        }
+      })
+    }
+    
+    if(this.products.length===0){
+      this.noproducts=true
+    }
     if(value.length===0){
       console.log(value.length,"zero case");
       this.products.length=0
     }
-    if(this.products.length===0){
-      this.noproducts=true
-    }
   }
 
   
+
+  // google signout
+
+  signOut(): void {
+    this.socialAuthService.signOut();
+    console.log("signed out");
+    this.googleuser=false
+    this._wishlistdata.googledetails(false)
+
+  }
 }

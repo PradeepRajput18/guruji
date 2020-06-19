@@ -20,8 +20,9 @@ import { MainComponent } from './main/main.component';
 import { OtpComponent } from './otp/otp.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
-
-
+import { UserGuard } from './user.guard';
+import { CanActivate} from '@angular/router';
+ 
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:"full"},
   //done
@@ -43,13 +44,13 @@ const routes: Routes = [
     //   {path:'wishlist',component:WishlistComponent},
     // ]
   },
-  {path:'orders',component:OrdersComponent},
-  {path:'personalinfo',component:PersonalinfoComponent},
+  {path:'orders',component:OrdersComponent,canActivate: [UserGuard]},
+  {path:'personalinfo',component:PersonalinfoComponent,canActivate: [UserGuard]},
 
 
 //noneed
     {path:'form',component:AddformComponent},
-    {path:'address',component:AddressesComponent},
+    {path:'address',component:AddressesComponent,canActivate: [UserGuard]},
 
     
 //teja

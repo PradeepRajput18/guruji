@@ -26,6 +26,7 @@ import { OtpComponent } from './otp/otp.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { AgmCoreModule } from '@agm/core';
+import { UserGuard } from './user.guard';
 // Configs 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -76,7 +77,7 @@ export function getAuthServiceConfigs() {
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },UserGuard
   ],
   bootstrap: [AppComponent]
 })
