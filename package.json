@@ -2,8 +2,8 @@
   "name": "ecom",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng server.js",
-    "start": "ng serve",
+    "ng": "ng",
+    "start": "ng serve node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

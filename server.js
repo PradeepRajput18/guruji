@@ -52,6 +52,6 @@ mongoose.connect(url,{ useUnifiedTopology: true,useNewUrlParser: true },(err)=>{
 })
 
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
 console.log("server connected to 3000");
 })
