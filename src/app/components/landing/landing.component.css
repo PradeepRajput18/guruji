@@ -1,0 +1,460 @@
+.logo{
+  /* margin-top: 12%; */
+  margin-right: 30%;
+  display: inline;
+  content: open-quote;
+}
+.logo:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.contentmove{
+  margin-top: 12%;
+
+}
+
+.btn-logo{
+    background-color: white;
+    color: #0D0C45;
+    text-decoration: underline;
+}
+
+.btn-logo:hover{
+    background:rgb(138, 241, 138);
+    color: black;
+    /* border-radius: 12px; */
+    text-decoration: none;
+   cursor: pointer;
+}
+
+.fontcolor{
+    background-color: cadetblue;
+}
+.samerow{
+  display: inline;
+  margin-left: 2%;
+  cursor: pointer;
+}
+.samesize{
+    width:30px;
+    height: auto;
+    margin-left: 1.5%;
+}
+.cardb{
+  
+
+    box-shadow:0 2px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+
+}
+/* now for cards section */
+.cardc{
+  border-radius: 25px;
+  border: thin;
+}
+
+.cardmove{
+  margin-left: 200;
+}
+
+.cardsall{
+  width: 300;
+  height: auto;
+}
+
+/* for categories section */
+
+.categories{
+  display: inline-flex;
+}
+
+
+.catcolor1:hover{
+  background-image: url('../../../assets/dried-fruits-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:transparent;
+  cursor: pointer;
+  /* opacity: 0.5; */
+}
+.catcolor2:hover{
+  background-image: url('../../../assets/organic-oils.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+.catcolor3:hover{
+  background-image: url('../../../assets/beverages.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+.catcolor4:hover{
+  background-image: url('../../../assets/immunity.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+.catcolor5:hover{
+  background-image: url('../../../assets/homedecoration.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+.catcolor6:hover{
+  background-image: url('../../../assets/homecare.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+.catcolor7:hover{
+  background-image: url('../../../assets/organic-snack.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+.catcolor8:hover{
+  background-image: url('../../../assets/fruitsandvegitables.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  cursor: pointer;
+}
+
+
+.snap{
+  color: transparent;
+ 
+}
+.snap:hover{
+  color:white;
+  font-weight: bolder;
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  justify-content: center;
+}
+
+/* customer details background color */
+
+.bginfo{
+ background-color:rgb(147, 246, 147);
+ display: inline;
+ border: none;
+}
+
+/* places and all */
+
+.place1:hover{
+  background-image: url('../../../assets/Hyderabad1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place2:hover{
+  background-image: url('../../../assets/delhi1.jfif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place3:hover{
+  background-image: url('../../../assets/shimla.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place4:hover{
+  background-image: url('../../../assets/bengaluru1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place5:hover{
+  background-image: url('../../../assets/mumbai.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place6:hover{
+  background-image: url('../../../assets/jaipur.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place7:hover{
+  background-image: url('../../../assets/srinagar.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+.place8:hover{
+  background-image: url('../../../assets/india.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #FFAE53;
+  font-weight: bolder;
+  font-size: 40;
+  cursor: pointer;
+}
+
+/* know more */
+.knowmore:hover{
+  background-color: rgb(138, 241, 138);
+  color: white;
+  /* border-radius: 16px; */
+}
+
+/* come to end */
+.subscribe{
+  margin-left: 10%;
+}
+
+/* about privacy and terms */
+.borderline{
+  border: none;
+  /* border-left: solid; */
+  
+}
+.moving{
+  float: right;
+}
+
+.font{
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+
+}
+.font1{
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+
+}
+.font2{
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+ font-weight: bolder;
+ 
+}
+.font3{
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+font-weight: bolder;
+letter-spacing: 0.75px;
+text-transform: capitalize;
+}
+.icon-bar {
+position: fixed;
+top: 60%;
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+z-index: 1;
+left: 0;
+}
+
+
+.icon-bar a {
+display: block;
+text-align: center;
+padding: 12px;
+transition: all 0.3s ease;
+color: white;
+font-size: 20px;
+
+}
+
+.icon-bar a:hover {
+background-color: #000;
+}
+
+
+.facebook {
+background: #3B5998;
+color: white;
+}
+
+.twitter {
+background: #55ACEE;
+color: white;
+}
+
+.google {
+background: #dd4b39;
+color: white;
+}
+
+.linkedin {
+background: #007bb5;
+color: white;
+}
+
+.youtube {
+background: #bb0000;
+color: white;
+}
+.abc {
+
+  float:left;
+border: solid;
+border-width: 1px;
+border-color:rgb(184, 183, 183);
+     cursor: pointer;
+    
+}
+/* .w{
+
+        border-left: none;
+        border-bottom: none;
+}
+.y{
+
+    border-left: none;
+    border-bottom: none;
+}
+.z{
+
+    border-left: none;
+    border-bottom: none;
+   
+}
+.x{
+  border-bottom: none;
+   
+}
+.w1{
+
+  border-left: none;
+}
+.y1{
+
+border-left: none;
+}
+.z1{
+
+border-left: none;
+} */
+
+.pic{
+padding:0 50px 5px 30px;
+border-radius: 20px 80px 40px 60px;
+}
+.but
+{
+  padding-bottom: 15px;
+}
+
+.card__one {
+  transition: transform .5s;}
+
+  .card__one::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s cubic-bezier(.165, .84, .44, 1);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, .15);
+    content: '';
+    opacity: 0;
+    z-index: -1;
+  }
+
+  /* .card__one:hover,
+  .card__one:focus {
+    transform: scale3d(1.006, 1.006,1.004, 1.004);}
+
+    .card__one:hover::after ,.card__one:focus::after{
+      opacity: 1;
+      z-index: 1;
+    } */
+   
+  
+.likebtn{
+  color: black;background-color: rgb(138, 241, 138);width: 60px;height:7%;font-size: 14px;margin-top: 1.5px;
+}
+.dbtn2{
+  background-color: chocolate;float:right;border-color: chocolate;color:white;border-radius: 10px
+}
+.dbtn1{
+  background-color: chocolate;border-color: chocolate;color:white;border-radius: 10px;
+}
+.icon{
+  /* border:2px solid black; */
+  position: fixed;
+  top:35%;
+  right: 0;
+  width:170px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+.icon a{
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'poppin', sans-serif;
+  margin: 0.5px;
+  text-align: left;
+  border-radius:  50px 0px 0px 50px ;
+  transform: translate(120px,0px);
+transition:   all 0.3s ease;
+
+}
+.icon a:hover{
+  transform: translate(0px,0px);
+}
+.icon a:hover i{
+  transform: rotate(360deg);
+}
+.icon a i{
+  margin-right: 15px;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  color: black;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+transition:   all 0.4s ease;
+
+}
+ 
+.icon a i.fa-facebook{color: #3B5998;}
+.icon a i.fa-twitter {color:#55ACEE;}
+.icon a i.fa-google  {color: #dd4b39;}
+.icon a i.fa-linkedin{color:#007bb5;}

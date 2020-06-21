@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WishlistdataService } from './wishlistdata.service';
-import { SandeepService } from './sandeep.service';
-import { ServersideService } from './serverside.service';
+import { WishlistdataService } from './services/wishlistdata.service';
+import { SandeepService } from './services/sandeep.service';
+import { ServersideService } from './services/serverside.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'angular-6-social-login';
 

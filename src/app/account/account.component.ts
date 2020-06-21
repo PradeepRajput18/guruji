@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { WishlistdataService } from '../wishlistdata.service';
-import { SandeepService } from '../sandeep.service';
+import { WishlistdataService } from '../services/wishlistdata.service';
+import { SandeepService } from '../services/sandeep.service';
 
 @Component({
   selector: 'app-account',
